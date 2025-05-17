@@ -1,4 +1,3 @@
-import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {CharacterDetailsStack} from '../CharacterDetails';
 import {TabNavigationStack} from '../TabNavigation';
@@ -13,16 +12,14 @@ export const MainStack = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Tab.Navigator>
+      <Tab.Navigator screenOptions={{header: () => <HeaderBar />}}>
         <Tab.Screen
           name={MainStackRoutes.TabNavigationStack}
           component={TabNavigationStack}
-          options={{header: () => <HeaderBar />}}
         />
         <Tab.Screen
           name={MainStackRoutes.CharacterDetailsStack}
           component={CharacterDetailsStack}
-          options={{header: () => <HeaderBar />}}
         />
       </Tab.Navigator>
     </QueryClientProvider>
