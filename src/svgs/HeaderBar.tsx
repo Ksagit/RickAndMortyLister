@@ -1,4 +1,4 @@
-import Svg, {SvgProps, Path, G, Defs, ClipPath} from 'react-native-svg';
+import Svg, {Path, G, Defs, ClipPath} from 'react-native-svg';
 
 export const HeaderBar = () => (
   <Svg width={500} height={80}>

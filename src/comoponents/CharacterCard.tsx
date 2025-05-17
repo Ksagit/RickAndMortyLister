@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import {Character} from '../schemas';
 import {
   View,
@@ -7,15 +8,38 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
+import {CharacterDetailsStackRoutes} from '../stacks/CharacterDetails/CharacterDetails.routes';
+import {
+  MainStackNavigationProp,
+  MainStackRoutes,
+} from '../stacks/Main/Main.routes';
 
-type CharacterCardProps = {
+export const CharacterCard = ({
+  character,
+  onLike,
+}: {
   character: Character;
   onLike: (character: Character) => void;
-};
+}) => {
+  const navigation = useNavigation(); // Get the navigation object from the current context (Tab Navigator)
 
-export const CharacterCard = ({character, onLike}: CharacterCardProps) => {
+  const handleViewDetails = () => {
+    // Get the parent navigator's navigation object
+    const parentNavigation = navigation.getParent<MainStackNavigationProp>();
+
+    if (parentNavigation) {
+      // Use the parent navigator to navigate to the CharacterDetailsStack screen
+      parentNavigation.navigate(MainStackRoutes.CharacterDetailsStack, {
+        screen: CharacterDetailsStackRoutes.CharacterDetailsScreen, // The screen INSIDE the CharacterDetailsStack
+        params: {characterId: character.id}, // Parameters for CharacterDetailsScreen
+      });
+    } else {
+      console.warn('Could not get parent navigator for navigation.');
+      // Handle the case where there's no parent navigator (e.g., if CharacterCard is used outside the tab stack)
+    }
+  };
   return (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={() => handleViewDetails()}>
       <View style={styles.infoSection}>
         <View style={styles.infoItem}>
           <Text style={styles.label}>NAME</Text>
@@ -48,7 +72,7 @@ export const CharacterCard = ({character, onLike}: CharacterCardProps) => {
           <Text style={styles.likeButtonText}>LIKE</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

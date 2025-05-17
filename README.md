@@ -4,7 +4,7 @@
 Please note: the Pull Request should be created in your own repository, not in the original boilerplate repository.
 
 ## Task
-
+w
 2. **Character Details Screen**
 
    - Implement a screen that shows detailed information about a selected character.
