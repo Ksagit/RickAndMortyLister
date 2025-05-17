@@ -1,4 +1,4 @@
-import React from 'react';
+import {Character} from '../schemas';
 import {
   View,
   Text,
@@ -7,11 +7,10 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import {Character} from '../schemas';
 
 type CharacterCardProps = {
   character: Character;
-  onLike?: (character: Character) => void;
+  onLike: (character: Character) => void;
 };
 
 export const CharacterCard = ({character, onLike}: CharacterCardProps) => {
@@ -20,20 +19,23 @@ export const CharacterCard = ({character, onLike}: CharacterCardProps) => {
       <View style={styles.infoSection}>
         <View style={styles.infoItem}>
           <Text style={styles.label}>NAME</Text>
-          <Text style={styles.value}>{character.name}</Text>
+          <Text style={styles.value} numberOfLines={1} ellipsizeMode="tail">
+            {character.name}
+          </Text>
         </View>
-
         <View style={styles.infoItem}>
           <Text style={styles.label}>STATUS</Text>
-          <Text style={styles.value}>{character.status}</Text>
+          <Text style={styles.value} numberOfLines={1} ellipsizeMode="tail">
+            {character.status}
+          </Text>
         </View>
-
         <View style={styles.infoItem}>
           <Text style={styles.label}>SPECIES</Text>
-          <Text style={styles.value}>{character.species}</Text>
+          <Text style={styles.value} numberOfLines={1} ellipsizeMode="tail">
+            {character.species}
+          </Text>
         </View>
       </View>
-
       <View style={styles.imageContainer}>
         <Image
           source={{uri: character.image}}
@@ -42,18 +44,17 @@ export const CharacterCard = ({character, onLike}: CharacterCardProps) => {
         />
         <TouchableOpacity
           style={styles.likeButton}
-          onPress={() => onLike?.(character)}>
-          <Text style={styles.likeButtonText}>★ LIKE</Text>
+          onPress={() => onLike(character)}>
+          <Text style={styles.likeButtonText}>LIKE</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-// Get screen width to calculate card dimensions
 const {width} = Dimensions.get('window');
-const cardWidth = width - 32; // Full width minus margins
-const cardHeight = 160; // Fixed height for the card
+const cardWidth = width - 32;
+const cardHeight = 160;
 
 const styles = StyleSheet.create({
   card: {
@@ -93,13 +94,17 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   imageContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
     width: '50%',
     height: '100%',
     position: 'relative',
   },
   image: {
-    width: '100%',
-    height: '100%',
+    width: '80%',
+    height: '80%',
+    borderWidth: 1,
+    borderRadius: 20,
   },
   likeButton: {
     position: 'absolute',
