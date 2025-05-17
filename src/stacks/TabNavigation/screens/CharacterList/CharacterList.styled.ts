@@ -6,11 +6,18 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  headerContainer: {
+    width: '100%',
+    alignItems: 'flex-start',
+  },
+  headerText: {
+    marginLeft: 20,
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'left',
+  },
   footer: {
     padding: 16,
     alignItems: 'center',
-  },
-  footerText: {
-    marginTop: 8,
   },
 });

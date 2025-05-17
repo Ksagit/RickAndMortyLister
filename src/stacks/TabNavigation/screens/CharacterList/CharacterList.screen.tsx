@@ -5,16 +5,15 @@ import {
   SafeAreaView,
   ActivityIndicator,
 } from 'react-native';
-import React from 'react';
+import {useState} from 'react';
 import {styles} from './CharacterList.styled';
-import {useNavigation} from '@react-navigation/native';
-import {MainStackNavigationProp} from '../../../Main/Main.routes';
 import {useCharactersQuery} from '../../../../queries';
 import {CharacterCard} from '../../../../comoponents/CharacterCard';
 import {Character} from '../../../../schemas';
+import {SearchBar} from '../../../../comoponents/SearchBar';
 
 const CharacterListScreen = () => {
-  const {navigate} = useNavigation<MainStackNavigationProp>();
+  const [search, setSearch] = useState('');
 
   const {
     data,
@@ -50,6 +49,10 @@ const CharacterListScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerText}>Characters</Text>
+      </View>
+      <SearchBar search={search} setSearch={setSearch} />
       <FlatList
         style={{width: '100%'}}
         data={characters}
@@ -67,7 +70,6 @@ const CharacterListScreen = () => {
           isFetchingNextPage ? (
             <View style={styles.footer}>
               <ActivityIndicator size="small" />
-              <Text style={styles.footerText}>Loading more...</Text>
             </View>
           ) : null
         }
