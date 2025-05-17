@@ -5,7 +5,7 @@ import {
   SafeAreaView,
   ActivityIndicator,
 } from 'react-native';
-import {useState} from 'react';
+import {useMemo, useState} from 'react';
 import {styles} from './CharacterList.styled';
 import {useCharactersQuery} from '../../../../queries';
 import {CharacterCard} from '../../../../comoponents/CharacterCard';
@@ -25,6 +25,22 @@ const CharacterListScreen = () => {
     error,
   } = useCharactersQuery();
 
+  const characters = data?.pages.flatMap(page => page.results) || [];
+
+  const filteredCharacters = useMemo(() => {
+    if (!search) {
+      return characters;
+    }
+    const lowerCaseSearch = search.toLowerCase();
+    return characters.filter(character =>
+      character.name.toLowerCase().includes(lowerCaseSearch),
+    );
+  }, [characters, search]);
+
+  const handleLike = (character: Character) => {
+    console.log(`Liked: ${character.name}`);
+  };
+
   if (isLoading) {
     return (
       <View style={styles.container}>
@@ -41,12 +57,6 @@ const CharacterListScreen = () => {
     );
   }
 
-  const characters = data?.pages.flatMap(page => page.results) || [];
-
-  const handleLike = (character: Character) => {
-    console.log(`Liked: ${character.name}`);
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
@@ -55,7 +65,7 @@ const CharacterListScreen = () => {
       <SearchBar search={search} setSearch={setSearch} />
       <FlatList
         style={{width: '100%'}}
-        data={characters}
+        data={filteredCharacters}
         keyExtractor={item => item.id.toString()}
         renderItem={({item}) => (
           <CharacterCard character={item} onLike={handleLike} />
