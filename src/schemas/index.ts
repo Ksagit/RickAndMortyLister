@@ -1,6 +1,7 @@
 import z from 'zod';
 
 export type Character = z.infer<typeof CharacterSchema>;
+export type InfoType = z.infer<typeof InfoSchema>;
 
 const InfoSchema = z.object({
   count: z.number(),
