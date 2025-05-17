@@ -6,4 +6,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  footer: {
+    padding: 16,
+    alignItems: 'center',
+  },
+  footerText: {
+    marginTop: 8,
+  },
 });
