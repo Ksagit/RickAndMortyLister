@@ -7,7 +7,7 @@ Please note: the Pull Request should be created in your own repository, not in t
 
 4. **Favorites**
 
-   - Implement a feature to add characters to a "Favorites" list. + character like button on the component + tabs opacity fade
+   - Implement a feature to add characters to a "Favorites" list. + character like button on the component
 
 ## Figma
 

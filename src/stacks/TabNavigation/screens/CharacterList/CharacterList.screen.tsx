@@ -9,7 +9,6 @@ import {useMemo, useState} from 'react';
 import {styles} from './CharacterList.styled';
 import {useCharactersQuery} from '../../../../queries';
 import {CharacterCard} from '../../../../comoponents/CharacterCard';
-import {Character} from '../../../../schemas';
 import {SearchBar} from '../../../../comoponents/SearchBar';
 
 const CharacterListScreen = () => {
@@ -39,10 +38,6 @@ const CharacterListScreen = () => {
     );
   }, [characters, search]);
 
-  const handleLike = (character: Character) => {
-    console.log(`Liked: ${character.name}`);
-  };
-
   if (isLoading) {
     return (
       <View style={styles.container}>
@@ -69,9 +64,7 @@ const CharacterListScreen = () => {
         style={{width: '100%'}}
         data={filteredCharacters}
         keyExtractor={item => item.id.toString()}
-        renderItem={({item}) => (
-          <CharacterCard character={item} onLike={handleLike} />
-        )}
+        renderItem={({item}) => <CharacterCard character={item} />}
         onEndReached={() => {
           if (hasNextPage && !isFetchingNextPage) {
             fetchNextPage();

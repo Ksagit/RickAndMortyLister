@@ -14,15 +14,22 @@ import {
   MainStackRoutes,
 } from '../stacks/Main/Main.routes';
 import {colors} from '../utils';
+import {useFavorites} from './providers/FavouriteContext';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-export const CharacterCard = ({
-  character,
-  onLike,
-}: {
-  character: Character;
-  onLike: (character: Character) => void;
-}) => {
+export const CharacterCard = ({character}: {character: Character}) => {
   const navigation = useNavigation();
+  const {isFavorited, addFavorite, removeFavorite} = useFavorites();
+
+  const favorited = isFavorited(character.id);
+
+  const handleFavoriteToggle = () => {
+    if (favorited) {
+      removeFavorite(character.id);
+    } else {
+      addFavorite(character);
+    }
+  };
 
   const handleViewDetails = () => {
     const parentNavigation = navigation.getParent<MainStackNavigationProp>();
@@ -67,8 +74,13 @@ export const CharacterCard = ({
         />
         <TouchableOpacity
           style={styles.likeButton}
-          onPress={() => onLike(character)}>
-          <Text style={styles.likeButtonText}>LIKE</Text>
+          onPress={handleFavoriteToggle}>
+          <FontAwesome
+            name={favorited ? 'star' : 'star-o'}
+            size={24}
+            color={favorited ? 'gold' : 'gray'}
+          />
+          <Text style={styles.likeButtonText}> LIKE</Text>
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
@@ -136,7 +148,7 @@ const styles = StyleSheet.create({
     bottom: 10,
     right: 10,
     borderWidth: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.greenBackground,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 20,

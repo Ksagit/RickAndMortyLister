@@ -4,6 +4,8 @@ import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {CharacterDetailsStackParamList} from '../../CharacterDetails.routes';
 import {Character, InfoType} from '../../../../schemas';
 import {styles} from './CharacterDetails.styled';
+import {useFavorites} from '../../../../comoponents/providers/FavouriteContext';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 type CharacterDetailsScreenRouteProp = RouteProp<
   CharacterDetailsStackParamList,
@@ -15,6 +17,7 @@ const CharacterDetailsScreen = () => {
   const route = useRoute<CharacterDetailsScreenRouteProp>();
   const {characterId} = route.params;
   const navigation = useNavigation();
+  const {isFavorited, addFavorite, removeFavorite} = useFavorites();
 
   const findCharacterById = (
     pages: {info: InfoType; results: Character[]}[] | undefined,
@@ -35,6 +38,18 @@ const CharacterDetailsScreen = () => {
   };
 
   const character = findCharacterById(data?.pages, characterId);
+
+  const favorited = character ? isFavorited(character.id) : false; // Check if favorited
+
+  const handleFavoriteToggle = () => {
+    if (character) {
+      if (favorited) {
+        removeFavorite(character.id);
+      } else {
+        addFavorite(character);
+      }
+    }
+  };
 
   if (!character) {
     return (
@@ -60,8 +75,12 @@ const CharacterDetailsScreen = () => {
         </View>
         <View style={styles.detailsContainer}>
           <Text style={styles.nameLabel}>NAME</Text>
-          <Text style={styles.characterName}>{character.name}</Text>
-
+          <Text
+            style={styles.characterName}
+            numberOfLines={1}
+            ellipsizeMode="tail">
+            {character.name}
+          </Text>
           <View style={styles.infoGrid}>
             <View style={styles.infoBox}>
               <Text style={styles.infoLabel}>STATUS</Text>
@@ -100,8 +119,17 @@ const CharacterDetailsScreen = () => {
               </Text>
             </View>
           </View>
-          <TouchableOpacity style={styles.likedButton}>
-            <Text style={styles.likedButtonText}>ADD TO LIKED</Text>
+          <TouchableOpacity
+            style={styles.likedButton}
+            onPress={handleFavoriteToggle}>
+            <FontAwesome
+              name={favorited ? 'star' : 'star-o'}
+              size={20}
+              color={favorited ? 'gold' : 'white'}
+            />
+            <Text style={styles.likedButtonText}>
+              {favorited ? 'REMOVE FROM LIKED' : 'ADD TO LIKED'}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
