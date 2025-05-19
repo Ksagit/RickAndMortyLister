@@ -1,8 +1,9 @@
 import Svg, {Path, G, Defs, ClipPath} from 'react-native-svg';
+import {colors} from '../utils';
 
 export const HeaderBar = () => (
   <Svg width={500} height={80}>
-    <Path fill="#162C1B" d="M0 0h500v80H0z" />
+    <Path fill={colors.primary} d="M0 0h500v80H0z" />
     <G clipPath="url(#a)">
       <Path
         fill="#BFDE42"

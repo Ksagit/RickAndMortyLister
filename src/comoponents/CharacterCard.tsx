@@ -13,6 +13,7 @@ import {
   MainStackNavigationProp,
   MainStackRoutes,
 } from '../stacks/Main/Main.routes';
+import {colors} from '../utils';
 
 export const CharacterCard = ({
   character,
@@ -81,14 +82,14 @@ const cardHeight = 160;
 const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: colors.white,
     borderRadius: 16,
     overflow: 'hidden',
     marginHorizontal: 16,
     marginVertical: 8,
     borderWidth: 1,
-    borderColor: '#1A4D2E',
-    shadowColor: '#000',
+    borderColor: colors.primary,
+    shadowColor: colors.black,
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -108,13 +109,13 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 12,
-    color: '#6b7280',
+    color: colors.grayText,
     fontWeight: '500',
     marginBottom: 2,
   },
   value: {
     fontSize: 18,
-    color: '#1f2937',
+    color: colors.black,
     fontWeight: '600',
   },
   imageContainer: {
@@ -134,20 +135,21 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 10,
     right: 10,
-    backgroundColor: 'white',
+    borderWidth: 1,
+    backgroundColor: colors.white,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: colors.white,
     shadowOffset: {width: 0, height: 1},
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 2,
   },
   likeButtonText: {
-    color: '#4b5563',
+    color: colors.grayText,
     fontWeight: '600',
     fontSize: 14,
   },

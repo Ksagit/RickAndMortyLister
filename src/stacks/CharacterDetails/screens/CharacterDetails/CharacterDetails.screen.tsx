@@ -65,19 +65,39 @@ const CharacterDetailsScreen = () => {
           <View style={styles.infoGrid}>
             <View style={styles.infoBox}>
               <Text style={styles.infoLabel}>STATUS</Text>
-              <Text style={styles.infoValue}>{character.status}</Text>
+              <Text
+                style={styles.infoValue}
+                numberOfLines={1}
+                ellipsizeMode="tail">
+                {character.status}
+              </Text>
             </View>
             <View style={styles.infoBox}>
               <Text style={styles.infoLabel}>ORIGIN</Text>
-              <Text style={styles.infoValue}>{character.origin.name}</Text>
+              <Text
+                style={styles.infoValue}
+                numberOfLines={1}
+                ellipsizeMode="tail">
+                {character.origin.name}
+              </Text>
             </View>
             <View style={styles.infoBox}>
               <Text style={styles.infoLabel}>SPECIES</Text>
-              <Text style={styles.infoValue}>{character.species}</Text>
+              <Text
+                style={styles.infoValue}
+                numberOfLines={1}
+                ellipsizeMode="tail">
+                {character.species}
+              </Text>
             </View>
             <View style={styles.infoBox}>
               <Text style={styles.infoLabel}>GENDER</Text>
-              <Text style={styles.infoValue}>{character.gender}</Text>
+              <Text
+                style={styles.infoValue}
+                numberOfLines={1}
+                ellipsizeMode="tail">
+                {character.gender}
+              </Text>
             </View>
           </View>
           <TouchableOpacity style={styles.likedButton}>

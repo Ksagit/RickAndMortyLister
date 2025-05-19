@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../../../utils';
 
 export const styles = StyleSheet.create({
   container: {
@@ -6,7 +7,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     paddingHorizontal: 20,
     paddingTop: 40,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.greenBackground,
   },
   link: {
     alignSelf: 'flex-start',
@@ -14,16 +15,16 @@ export const styles = StyleSheet.create({
   },
   linkText: {
     textDecorationLine: 'underline',
-    color: '#1A4D2E',
+    color: colors.primary,
     fontSize: 16,
   },
   card: {
     borderWidth: 2,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
     borderRadius: 15,
     width: '100%',
     elevation: 5,
-    borderColor: '#1A4D2E',
+    borderColor: colors.primary,
     borderRightWidth: 6,
     borderBottomWidth: 6,
     alignSelf: 'center',
@@ -46,7 +47,7 @@ export const styles = StyleSheet.create({
   },
   nameLabel: {
     fontSize: 12,
-    color: '#8E8E93',
+    color: colors.grayText,
     marginBottom: 4,
     textTransform: 'uppercase',
     fontWeight: 'bold',
@@ -54,7 +55,7 @@ export const styles = StyleSheet.create({
   characterName: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#1A4D2E',
+    color: colors.primary,
     marginBottom: 20,
   },
   infoGrid: {
@@ -64,7 +65,7 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
   infoBox: {
-    backgroundColor: '#F2F2F7',
+    backgroundColor: colors.greenBackground,
     borderRadius: 8,
     padding: 10,
     width: '48%',
@@ -72,7 +73,7 @@ export const styles = StyleSheet.create({
   },
   infoLabel: {
     fontSize: 10,
-    color: '#8E8E93',
+    color: colors.grayText,
     marginBottom: 2,
     textTransform: 'uppercase',
     fontWeight: 'bold',
@@ -80,10 +81,10 @@ export const styles = StyleSheet.create({
   infoValue: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#3A3A3C',
+    color: colors.grayText,
   },
   likedButton: {
-    backgroundColor: '#1A4D2E',
+    backgroundColor: colors.primary,
     borderRadius: 25,
     paddingVertical: 15,
     flexDirection: 'row',
@@ -91,13 +92,13 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   likedButtonText: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontSize: 16,
     fontWeight: 'bold',
     marginLeft: 8,
   },
   errorText: {
     fontSize: 18,
-    color: 'red',
+    color: colors.red,
   },
 });
