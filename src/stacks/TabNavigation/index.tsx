@@ -19,8 +19,8 @@ export const TabNavigationStack = () => {
         component={CharacterListScreen}
         options={{
           headerShown: false,
-          tabBarIcon: () => (
-            <FontAwesome5 name="user-alt" size={20} color="white" />
+          tabBarIcon: ({color, size}) => (
+            <FontAwesome5 name="user-alt" size={size} color={color} />
           ),
         }}
       />
@@ -29,7 +29,9 @@ export const TabNavigationStack = () => {
         component={FavoriteCharactersScreen}
         options={{
           headerShown: false,
-          tabBarIcon: () => <FontAwesome name="star" size={20} color="white" />,
+          tabBarIcon: ({color, size}) => (
+            <FontAwesome name="star" size={size} color={color} />
+          ),
         }}
       />
     </Tab.Navigator>
