@@ -1,18 +1,29 @@
-# Rick & Morty App - Technical Task for React Native Developers
+# Rick And Mortyister
 
-2. Work on your tasks in a separate branch and, once completed, share your repository with us by opening a **Pull Request** with your changes.
-Please note: the Pull Request should be created in your own repository, not in the original boilerplate repository.
+A React Native Expo application that lists all of the Rick & Morty characters.
 
-## Task
+##  How to use
 
-4. **Favorites**
+Clone the project with:
+```sh
+git clone https://github.com/Ksagit/YouTube-Learn.git
+```
 
-   - Implement a feature to add characters to a "Favorites" list. + character like button on the component
+Install dependencies with:
+```sh
+npm install
+```
 
-## Figma
+Build the project with:
+```sh
+npx expo prebuild
+```
 
-- **Figma Designs**: [Rick & Morty Task Figma](https://www.figma.com/design/Ui91kU1cPRnMYW09DorLK1/Rick-%26-Morty-Task?node-id=0-1&node-type=canvas&t=WssIWdkm0D13Vqtq-0)
+Open the appropriate emulator with: 
+```sh
+// iOS emulator
+npx expo run ios
 
-## Technical Details
-
-- **Global State Management**: Use one of the following for global state: **React Context API** or **Jotai**.
+// Android emulator
+npx expo run android
+```
