@@ -25,7 +25,9 @@ const CharacterListScreen = () => {
     error,
   } = useCharactersQuery();
 
-  const characters = data?.pages.flatMap(page => page.results) || [];
+  const characters = useMemo(() => {
+    return data?.pages.flatMap(page => page.results) || [];
+  }, [data?.pages]);
 
   const filteredCharacters = useMemo(() => {
     if (!search) {

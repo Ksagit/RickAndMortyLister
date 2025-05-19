@@ -4,14 +4,10 @@
 Please note: the Pull Request should be created in your own repository, not in the original boilerplate repository.
 
 ## Task
-w
-2. **Character Details Screen**
-
-   - Implement a screen that shows detailed information about a selected character.
 
 4. **Favorites**
 
-   - Implement a feature to add characters to a "Favorites" list. + character like button on the component
+   - Implement a feature to add characters to a "Favorites" list. + character like button on the component + tabs opacity fade + cleanup colors
 
 ## Figma
 

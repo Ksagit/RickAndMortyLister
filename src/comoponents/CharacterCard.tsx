@@ -21,23 +21,21 @@ export const CharacterCard = ({
   character: Character;
   onLike: (character: Character) => void;
 }) => {
-  const navigation = useNavigation(); // Get the navigation object from the current context (Tab Navigator)
+  const navigation = useNavigation();
 
   const handleViewDetails = () => {
-    // Get the parent navigator's navigation object
     const parentNavigation = navigation.getParent<MainStackNavigationProp>();
 
     if (parentNavigation) {
-      // Use the parent navigator to navigate to the CharacterDetailsStack screen
       parentNavigation.navigate(MainStackRoutes.CharacterDetailsStack, {
-        screen: CharacterDetailsStackRoutes.CharacterDetailsScreen, // The screen INSIDE the CharacterDetailsStack
-        params: {characterId: character.id}, // Parameters for CharacterDetailsScreen
+        screen: CharacterDetailsStackRoutes.CharacterDetailsScreen,
+        params: {characterId: character.id},
       });
     } else {
       console.warn('Could not get parent navigator for navigation.');
-      // Handle the case where there's no parent navigator (e.g., if CharacterCard is used outside the tab stack)
     }
   };
+
   return (
     <TouchableOpacity style={styles.card} onPress={() => handleViewDetails()}>
       <View style={styles.infoSection}>
@@ -89,12 +87,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginVertical: 8,
     borderWidth: 1,
-    borderColor: '#2c3e50',
+    borderColor: '#1A4D2E',
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
+    borderRightWidth: 6,
+    borderBottomWidth: 6,
     height: cardHeight,
     width: cardWidth,
   },
