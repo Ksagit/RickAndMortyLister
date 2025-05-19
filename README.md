@@ -1,4 +1,4 @@
-# Rick And Mortyister
+# Rick And Morty Lister
 
 A React Native Expo application that lists all of the Rick & Morty characters.
 
@@ -6,7 +6,7 @@ A React Native Expo application that lists all of the Rick & Morty characters.
 
 Clone the project with:
 ```sh
-git clone https://github.com/Ksagit/YouTube-Learn.git
+git clone https://github.com/Ksagit/RickAndMortyLister.git
 ```
 
 Install dependencies with:
