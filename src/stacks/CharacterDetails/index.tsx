@@ -1,5 +1,4 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React from 'react';
 import {CharacterDetailsStackRoutes} from './CharacterDetails.routes';
 import {CharacterDetailsScreen} from './screens';
 
@@ -10,7 +9,8 @@ export const CharacterDetailsStack = () => {
     <Stack.Navigator>
       <Stack.Screen
         name={CharacterDetailsStackRoutes.CharacterDetailsScreen}
-        children={CharacterDetailsScreen}
+        component={CharacterDetailsScreen}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );

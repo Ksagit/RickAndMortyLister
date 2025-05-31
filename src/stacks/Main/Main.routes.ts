@@ -11,6 +11,9 @@ export type MainStackParamList = {
 export type MainStackNavigationProp =
   NativeStackNavigationProp<MainStackParamList>;
 
+export type MainStackParentNavigationProp =
+  NativeStackNavigationProp<MainStackParamList>;
+
 export const MainStackRoutes: {
   [route in keyof MainStackParamList]: route;
 } = {
